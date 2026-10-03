@@ -1,0 +1,75 @@
+# 
+Last updated: October 3, 2026
+
+This notice describes the current behavior of the Yanami desktop application. The
+publisher should publish this document at a public URL and review it before
+submitting the app to any store. This notice is not legal advice.
+
+## Data and processing
+
+- **First-run consent:** The app blocks its main features until the user accepts
+  the in-app privacy notice and [Terms of Use](./TERMS.md). Declining closes the
+  app and does not save acceptance. The acceptance version and timestamp are
+  stored in Godot's local per-user application data. A user can withdraw
+  consent in Settings; this removes the saved acceptance and closes the app.
+  The notices appear again at the next launch.
+- **Wake-word microphone:** When enabled, the microphone waits for “Yanami”.
+  Vosk performs wake-word recognition locally on the device; wake-word audio is
+  not sent to a cloud service. The wake-word toggle can be turned off.
+- **Manual microphone:** When the user turns on manual listening, the app
+  records a spoken phrase and sends its audio to Google's speech-recognition
+  service for transcription. Manual listening can be turned off with its
+  toggle. Microphone availability and processing also depend on Windows and
+  installed audio components.
+- **Chat and AI providers:** Chat text, the system instructions/profile, and
+  recent conversation messages are sent to the selected AI provider. Ollama
+  can run locally on the user's computer. If an external API is selected, that
+  provider receives the request and handles it under its own terms and privacy
+  policy. API availability, retention, and charges are determined by that
+  provider.
+- **Local conversation data:** Up to 100 recent chat entries are persisted in
+  `%APPDATA%/MiAvatar/verity_chat_history.json`. The app also stores its
+  configuration and profile under `%APPDATA%/MiAvatar/`. The API key is
+  protected using Windows DPAPI and is not stored in the configuration JSON.
+- **Spoken responses:** Neural speech uses Microsoft Edge TTS over the Internet
+  and sends the reply text to that service. If it fails, the app attempts to
+  use Windows SAPI locally.
+- **Screen and camera:** Visual permissions start disabled. A screen or camera
+  image is captured only after the user enables `PERMISOS` and explicitly
+  presses `VER PANTALLA` or `VER CÁMARA`. The requested image is sent to the
+  active AI model for analysis. The app does not continuously stream screen
+  or camera images.
+- **PC actions:** PC control starts disabled and requires both visual
+  permissions and the separate PC-control toggle. It runs only the explicit
+  actions supported by the app, not arbitrary model-generated shell commands.
+- **Active window observation:** When enabled, the app periodically reads and
+  displays the active window title. It does not capture the window image.
+- **Mood indicator:** The neutral/happy/sad/angry estimate is derived locally
+  from message wording. It is approximate and is not a diagnosis.
+
+## Third-party services and requirements
+
+Depending on the features and configuration used, Yanami may communicate with
+Google speech recognition, Microsoft Edge TTS, Ollama, or a user-selected
+OpenAI-compatible API such as Google Gemini, OpenAI, OpenRouter, Groq, DeepSeek,
+or another custom endpoint. Review the chosen provider's privacy policy and
+terms before use. Voice and AI features may require Python packages, Internet
+access, and/or separately installed Ollama software and models.
+
+## User choices and deletion
+
+Users can disable wake-word listening, turn manual listening off, disable
+visual permissions, disable PC control, and stop using the application.
+Conversation history and configuration files can be removed by the user from
+`%APPDATA%/MiAvatar/`. Withdrawing consent removes the saved consent decision;
+it does not erase data already sent to third-party providers. Data held by a
+third-party provider is subject to that provider's own policies and controls.
+
+## Contact
+
+For support and privacy questions, contact
+[jackmodel1exe@gmail.com](mailto:jackmodel1exe@gmail.com).
+
+Before store publication, the publisher should verify the service behavior,
+identify the legal publisher/controller, provide a public URL for this notice,
+and update it if bundled components or third-party processing change.
