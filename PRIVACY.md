@@ -1,4 +1,4 @@
-# 
+# # Yanami Desktop Privacy Notice.
 Last updated: October 3, 2026
 
 This notice describes the current behavior of the Yanami desktop application. The
