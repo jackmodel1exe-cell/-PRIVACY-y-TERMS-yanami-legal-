@@ -1,4 +1,4 @@
-
+# Yanami — Términos y condiciones de uso
 Última actualización: 3 de octubre de 2026
 
 Este borrador debe revisarse por un profesional legal y confirmarse con la
